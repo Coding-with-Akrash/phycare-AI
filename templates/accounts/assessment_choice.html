@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Choose Assessment - Nexa PsychCare{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-clipboard-list me-2"></i>Choose Your Assessment Method
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-center text-muted mb-4">
+                        Select how you'd like to assess your mental health today. Both options provide personalized insights and recommendations.
+                    </p>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-primary">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-question-circle fa-3x text-primary mb-3"></i>
+                                    <h5 class="card-title">Mental Health Quiz</h5>
+                                    <p class="card-text">
+                                        Take our comprehensive 25-question assessment covering depression, anxiety, and general mental well-being.
+                                        Get detailed analysis and personalized recommendations.
+                                    </p>
+                                    <ul class="list-unstyled text-start mb-3">
+                                        <li><i class="fas fa-check text-success me-2"></i>25 detailed questions</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Evidence-based assessment</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Instant results & recommendations</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Doctor recommendations if needed</li>
+                                    </ul>
+                                    <a href="{% url 'mental_health_quiz' %}" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-play me-2"></i>Start Quiz
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-success">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-comments fa-3x text-success mb-3"></i>
+                                    <h5 class="card-title">AI Wellness Chat</h5>
+                                    <p class="card-text">
+                                        Have a natural conversation with our AI assistant. Share your thoughts and feelings for personalized support and guidance.
+                                    </p>
+                                    <ul class="list-unstyled text-start mb-3">
+                                        <li><i class="fas fa-check text-success me-2"></i>Conversational AI support</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Real-time emotional analysis</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Personalized recommendations</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Doctor suggestions when appropriate</li>
+                                    </ul>
+                                    <a href="{% url 'ai_chat' %}" class="btn btn-success btn-lg">
+                                        <i class="fas fa-comment me-2"></i>Start Chat
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <p class="text-muted">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Both assessment methods are confidential and designed to support your mental health journey.
+                        </p>
+                        <a href="{% url 'patient_dashboard' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

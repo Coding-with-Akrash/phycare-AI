@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyCare AI - {% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+            :root {
+                --primary-color: #6366f1;
+                --primary-dark: #4f46e5;
+                --primary-light: #a5b4fc;
+                --secondary-color: #64748b;
+                --accent-color: #06b6d4;
+                --success-color: #10b981;
+                --warning-color: #f59e0b;
+                --error-color: #ef4444;
+                --background-color: #f8fafc;
+                --surface-color: #ffffff;
+                --text-primary: #1e293b;
+                --text-secondary: #64748b;
+                --border-color: #e2e8f0;
+                --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+                --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+                --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+                --shadow-lg: 0 8px 35px rgba(0, 0, 0, 0.15);
+                --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+            }
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Inter', sans-serif;
+                background: var(--background-color);
+                color: var(--text-primary);
+                line-height: 1.6;
+                overflow-x: hidden;
+                padding-top: 80px; /* Account for fixed navbar */
+            }
+            
+            /* Smooth scrolling */
+            html {
+                scroll-behavior: smooth;
+            }
+            
+            /* Enhanced navbar with glass effect */
+            .navbar {
+                background: rgba(255, 255, 255, 0.95) !important;
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+            }
+            
+            .navbar.scrolled {
+                background: rgba(255, 255, 255, 0.98) !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            }
+            
+            .navbar-brand {
+                font-weight: 700;
+                font-size: 1.75rem;
+                background: var(--gradient-primary);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                transition: all 0.3s ease;
+            }
+            
+            .navbar-brand:hover {
+                transform: scale(1.05);
+            }
+            
+            .nav-link {
+                font-weight: 500;
+                color: var(--text-secondary) !important;
+                position: relative;
+                transition: all 0.3s ease;
+                padding: 0.5rem 1rem !important;
+            }
+            
+            .nav-link:hover {
+                color: var(--primary-color) !important;
+            }
+            
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                left: 50%;
+                background: var(--gradient-primary);
+                transition: all 0.3s ease;
+                transform: translateX(-50%);
+            }
+            
+            .nav-link:hover::after {
+                width: 80%;
+            }
+            
+            /* Enhanced buttons with multiple variants */
+            .btn {
+                border-radius: 12px;
+                padding: 12px 24px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                border: none;
+                position: relative;
+                overflow: hidden;
+                text-transform: none;
+                letter-spacing: 0.025em;
+            }
+            
+            .btn-primary {
+                background: var(--gradient-primary);
+                color: white;
+                box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            }
+            
+            .btn-primary:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            }
+            
+            .btn-outline-primary {
+                border: 2px solid var(--primary-color);
+                color: var(--primary-color);
+                background: transparent;
+            }
+            
+            .btn-outline-primary:hover {
+                background: var(--primary-color);
+                color: white;
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            }
+            
+            .btn-success {
+                background: var(--gradient-success);
+                color: white;
+            }
+            
+            .btn-accent {
+                background: var(--gradient-secondary);
+                color: white;
+            }
+            
+            /* Loading animation */
+            .btn-loading {
+                position: relative;
+                color: transparent !important;
+            }
+            
+            .btn-loading::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 20px;
+                height: 20px;
+                border: 2px solid transparent;
+                border-top: 2px solid currentColor;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+            
+            @keyframes spin {
+                0% { transform: translate(-50%, -50%) rotate(0deg); }
+                100% { transform: translate(-50%, -50%) rotate(360deg); }
+            }
+            
+            /* Enhanced cards with multiple styles */
+            .card {
+                border: none;
+                border-radius: 20px;
+                box-shadow: var(--shadow-md);
+                background: var(--surface-color);
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                overflow: hidden;
+            }
+            
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .card-premium {
+                background: linear-gradient(145deg, var(--surface-color), #f9fafb);
+                border: 1px solid rgba(99, 102, 241, 0.1);
+            }
+            
+            .card-elevated {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            }
+            
+            /* Enhanced forms with floating labels */
+            .form-group {
+                position: relative;
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-control {
+                border: 2px solid var(--border-color);
+                border-radius: 12px;
+                padding: 16px 20px;
+                font-size: 14px;
+                transition: all 0.3s ease;
+                background: var(--surface-color);
+                width: 100%;
+            }
+            
+            .form-control:focus {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.15);
+                transform: translateY(-1px);
+            }
+            
+            .form-floating {
+                position: relative;
+            }
+            
+            .form-floating input {
+                padding: 16px 20px 8px;
+            }
+            
+            .form-floating label {
+                position: absolute;
+                top: 16px;
+                left: 20px;
+                color: var(--text-secondary);
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .form-floating input:focus + label,
+            .form-floating input:not(:placeholder-shown) + label {
+                top: 8px;
+                left: 16px;
+                font-size: 12px;
+                color: var(--primary-color);
+            }
+            
+            /* Hero section with enhanced animations */
+            .hero-section {
+                background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+                color: white;
+                padding: 140px 0 100px;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .hero-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><path d="M0,0 C150,100 350,0 500,50 C650,100 850,0 1000,0 L1000,100 L0,100 Z"></path></svg>') no-repeat bottom;
+                background-size: cover;
+            }
+            
+            .hero-content {
+                position: relative;
+                z-index: 1;
+                animation: fadeInUp 1s ease-out;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+                font-weight: 800;
+                margin-bottom: 1.5rem;
+                line-height: 1.1;
+                text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            .hero-subtitle {
+                font-size: 1.35rem;
+                opacity: 0.95;
+                margin-bottom: 2.5rem;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+                font-weight: 300;
+            }
+            
+            /* Enhanced stats section */
+            .stats-section {
+                background: linear-gradient(145deg, var(--surface-color), #f9fafb);
+                padding: 100px 0;
+                position: relative;
+            }
+            
+            .stats-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            }
+            
+            .stat-card {
+                text-align: center;
+                padding: 2.5rem;
+                border-radius: 20px;
+                background: var(--surface-color);
+                border: 1px solid rgba(99, 102, 241, 0.05);
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .stat-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--gradient-primary);
+                transform: scaleX(0);
+                transition: transform 0.3s ease;
+            }
+            
+            .stat-card:hover::before {
+                transform: scaleX(1);
+            }
+            
+            .stat-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: var(--shadow-xl);
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+                font-weight: 800;
+                background: var(--gradient-primary);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                margin-bottom: 0.75rem;
+            }
+            
+            .stat-label {
+                color: var(--text-secondary);
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                font-size: 0.85rem;
+            }
+            
+            /* Enhanced messages */
+            .messages {
+                margin-bottom: 2rem;
+            }
+            
+            .alert {
+                border: none;
+                border-radius: 16px;
+                padding: 16px 24px;
+                font-weight: 500;
+                box-shadow: var(--shadow-md);
+                animation: slideInDown 0.5s ease-out;
+            }
+            
+            @keyframes slideInDown {
+                from {
+                    transform: translateY(-100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            
+            .alert-success {
+                background: var(--gradient-success);
+                color: white;
+            }
+            
+            .alert-error {
+                background: linear-gradient(135deg, #ef4444, #dc2626);
+                color: white;
+            }
+            
+            .alert-warning {
+                background: linear-gradient(135deg, #f59e0b, #d97706);
+                color: white;
+            }
+            
+            /* Enhanced footer */
+            .footer {
+                background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+                color: white;
+                padding: 4rem 0 2rem;
+                text-align: center;
+                position: relative;
+            }
+            
+            .footer::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            }
+            
+            .social-links a {
+                color: var(--text-secondary);
+                font-size: 1.75rem;
+                margin: 0 0.75rem;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+            
+            .social-links a:hover {
+                color: var(--primary-light);
+                transform: translateY(-3px) scale(1.1);
+            }
+            
+            /* Loading states and micro-interactions */
+            .loading-skeleton {
+                background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+                background-size: 200% 100%;
+                animation: loading 1.5s infinite;
+            }
+            
+            @keyframes loading {
+                0% { background-position: 200% 0; }
+                100% { background-position: -200% 0; }
+            }
+            
+            /* Responsive design */
+            @media (max-width: 768px) {
+                .hero-title {
+                    font-size: 2.75rem;
+                }
+                
+                .hero-section {
+                    padding: 120px 0 80px;
+                }
+                
+                .navbar-brand {
+                    font-size: 1.5rem;
+                }
+                
+                .stat-card {
+                    padding: 2rem 1.5rem;
+                    margin-bottom: 1.5rem;
+                }
+                
+                .stat-number {
+                    font-size: 2.5rem;
+                }
+            }
+            
+            /* Pulse animation for important elements */
+            .pulse {
+                animation: pulse 2s infinite;
+            }
+            
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'dashboard' %}">
+                <i class="fas fa-bolt me-2"></i>PsyCare AI
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-info-circle me-1"></i>About
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'about' %}"><i class="fas fa-building me-2"></i>About Us</a></li>
+                            <li><a class="dropdown-item" href="{% url 'features' %}"><i class="fas fa-star me-2"></i>Features</a></li>
+                            <li><a class="dropdown-item" href="{% url 'pricing' %}"><i class="fas fa-dollar-sign me-2"></i>Pricing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">
+                            <i class="fas fa-phone me-1"></i>Contact
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'dashboard' %}">
+                                <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                            </a>
+                        </li>
+                        {% if user.role == 'patient' %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'mood_quiz' %}">
+                                    <i class="fas fa-heartbeat me-1"></i>Mood Check
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'ai_chat' %}">
+                                    <i class="fas fa-robot me-1"></i>AI Chat
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'doctor_directory' %}">
+                                    <i class="fas fa-user-md me-1"></i>Find Doctors
+                                </a>
+                            </li>
+                        {% elif user.role == 'admin' %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'admin:index' %}">
+                                    <i class="fas fa-cogs me-1"></i>Admin Panel
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt me-1"></i>Logout
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">
+                                <i class="fas fa-user-plus me-1"></i>Sign Up
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    <div class="container mt-4">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>PsyCare AI</h5>
+                    <p class="mb-0">A modern healthcare AI platform built with Django for secure authentication and management.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <p class="text-center mb-0">&copy; 2024 PsyCare AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+    // Enhanced JavaScript functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        let lastScrollTop = 0;
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Form validation and enhancement
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            const inputs = form.querySelectorAll('.form-control');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+                
+                // Real-time validation
+                input.addEventListener('input', function() {
+                    validateField(this);
+                });
+            });
+            
+            form.addEventListener('submit', function(e) {
+                const submitBtn = this.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.classList.add('btn-loading');
+                    submitBtn.disabled = true;
+                }
+            });
+        });
+        
+        // Button hover effects
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Auto-dismiss alerts
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }, 5000);
+        });
+        
+        // Counter animation for stats
+        const counters = document.querySelectorAll('.stat-number');
+        const observerOptions = {
+            threshold: 0.7
+        };
+        
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+        
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+    
+    // Utility functions
+    function validateField(field) {
+        const value = field.value.trim();
+        const fieldType = field.type;
+        let isValid = true;
+        let errorMessage = '';
+        
+        // Remove existing error styling
+        field.classList.remove('is-invalid', 'is-valid');
+        const existingError = field.parentElement.querySelector('.invalid-feedback');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Validation rules
+        if (field.hasAttribute('required') && !value) {
+            isValid = false;
+            errorMessage = 'This field is required.';
+        } else if (fieldType === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address.';
+            }
+        } else if (field.name === 'password' && value && value.length < 6) {
+            isValid = false;
+            errorMessage = 'Password must be at least 6 characters long.';
+        }
+        
+        // Apply validation styling
+        if (isValid && value) {
+            field.classList.add('is-valid');
+        } else if (!isValid && (value || field.hasAttribute('required'))) {
+            field.classList.add('is-invalid');
+            showFieldError(field, errorMessage);
+        }
+        
+        return isValid;
+    }
+    
+    function showFieldError(field, message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'invalid-feedback';
+        errorDiv.textContent = message;
+        field.parentElement.appendChild(errorDiv);
+    }
+    
+    function animateCounter(element) {
+        const text = element.textContent;
+        const number = parseInt(text.replace(/\D/g, ''));
+        const suffix = text.replace(/\d/g, '');
+        
+        if (isNaN(number)) return;
+        
+        const duration = 2000;
+        const steps = 60;
+        const increment = number / steps;
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= number) {
+                current = number;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current) + suffix;
+        }, duration / steps);
+    }
+</script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

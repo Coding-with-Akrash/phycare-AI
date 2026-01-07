@@ -1,0 +1,365 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Dashboard - PsyCare AI{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome, {{ user.first_name|default:user.username }}!</h1>
+            <p class="hero-subtitle">
+                Your personal mental health platform for managing therapy sessions, connecting with psychologists, and tracking your wellness journey.
+            </p>
+            <div>
+                <button onclick="history.back()" class="btn btn-outline-light me-2">
+                    <i class="fas fa-arrow-left me-2"></i>Back
+                </button>
+                <a href="{% url 'logout' %}" class="btn btn-outline-light">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard Content -->
+<div class="container my-5">
+    <!-- Quick Stats -->
+    <div class="row mb-4">
+        <div class="col-md-3 col-6">
+            <div class="stat-card">
+                <div class="stat-number">{{ recent_moods|length }}</div>
+                <div class="stat-label">Mood Entries</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card">
+                <div class="stat-number">{{ recent_conversations|length }}</div>
+                <div class="stat-label">AI Chats</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card">
+                <div class="stat-number">{{ user.profile.age|default:"-" }}</div>
+                <div class="stat-label">Age</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="stat-card">
+                <div class="stat-number">{{ user.profile.state|default:"-" }}</div>
+                <div class="stat-label">State</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Profile Information -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user me-2"></i>Personal Information
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Full Name:</strong> {{ user.first_name|default:"" }} {{ user.last_name|default:"" }}</p>
+                    <p><strong>Date of Birth:</strong> {{ user.profile.date_of_birth|default:"Not provided"|date:"F j, Y" }}</p>
+                    <p><strong>Age:</strong> {{ user.profile.age|default:"Not specified" }}</p>
+                    <p><strong>Gender:</strong> {{ user.profile.gender|default:"Not specified"|title }}</p>
+                    <p><strong>Occupation:</strong> {{ user.profile.occupation|default:"Not specified" }}</p>
+                    <p><strong>Phone:</strong> {{ user.profile.phone|default:"Not provided" }}</p>
+                    <p><strong>Address:</strong> {{ user.profile.address|default:"Not provided" }}</p>
+                    <p><strong>City:</strong> {{ user.profile.city|default:"Not specified" }}</p>
+                    <p><strong>State:</strong> {{ user.profile.state|default:"Not specified" }}</p>
+                    <p><strong>Emergency Contact:</strong> {{ user.profile.emergency_contact|default:"Not provided" }}</p>
+                    <p><strong>Emergency Phone:</strong> {{ user.profile.emergency_phone|default:"Not provided" }}</p>
+                    <p><strong>Member Since:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
+                    <p><strong>Status:</strong> 
+                        <span class="badge bg-success">Active</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-tasks me-2"></i>Quick Actions
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'assessment_choice' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-clipboard-check me-2"></i>Start Mental Health Assessment
+                        </a>
+                        <a href="{% url 'mood_quiz' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-heartbeat me-2"></i>Quick Mood Check-In
+                        </a>
+                        <a href="{% url 'doctor_directory' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-user-md me-2"></i>Find Doctors
+                        </a>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-calendar-plus me-2"></i>Book Appointment
+                        </button>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-edit me-2"></i>Update Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood Tracking Section -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-heart me-2"></i>Today's Mood
+                    </h5>
+                </div>
+                <div class="card-body text-center">
+                    {% if recent_moods %}
+                        <div class="mb-3">
+                            {% if recent_moods.0.mood == 'excellent' %}😊
+                            {% elif recent_moods.0.mood == 'good' %}🙂
+                            {% elif recent_moods.0.mood == 'neutral' %}😐
+                            {% elif recent_moods.0.mood == 'poor' %}😟
+                            {% else %}😢{% endif %}
+                        </div>
+                        <h4 class="text-capitalize">{{ recent_moods.0.mood }}</h4>
+                        <small class="text-muted">{{ recent_moods.0.created_at|date:"M j, Y" }}</small>
+                    {% else %}
+                        <p class="text-muted">No mood entries yet</p>
+                    {% endif %}
+                    <a href="{% url 'mood_quiz' %}" class="btn btn-outline-primary mt-3">Update Mood</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-robot me-2"></i>AI Wellness Chat
+                    </h5>
+                </div>
+                <div class="card-body text-center">
+                    <p class="text-muted mb-3">Talk to our AI assistant for support and guidance</p>
+                    <a href="{% url 'ai_chat' %}" class="btn btn-accent">Start Chat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Advice Section -->
+    {% if latest_advice %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-lightbulb me-2"></i>Personalized AI Advice
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p>{{ latest_advice.advice_text }}</p>
+                    {% if latest_advice.recommended_doctors.exists %}
+                        <h6 class="mt-3">Recommended Doctors:</h6>
+                        <div class="row">
+                            {% for doctor in latest_advice.recommended_doctors %}
+                                <div class="col-md-4 mb-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-2">
+                                            {% if doctor.profile_photo %}
+                                                <img src="{{ doctor.profile_photo.url }}" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;" alt="Doctor">
+                                            {% else %}
+                                                <div class="rounded-circle bg-primary d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                    <i class="fas fa-user-md text-white"></i>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            <small class="fw-bold">{{ doctor.full_name|default:doctor.user.username }}</small><br>
+                                            <small class="text-muted">{{ doctor.get_specialization_display }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Recommended Doctors Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-user-md me-2"></i>Recommended Doctors
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for doctor in recommended_doctors %}
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body text-center">
+                                        {% if doctor.profile_photo %}
+                                            <img src="{{ doctor.profile_photo.url }}" class="rounded-circle mb-2" style="width: 60px; height: 60px; object-fit: cover;" alt="Doctor">
+                                        {% else %}
+                                            <div class="rounded-circle bg-primary d-inline-flex align-items-center justify-content-center mb-2" style="width: 60px; height: 60px;">
+                                                <i class="fas fa-user-md text-white"></i>
+                                            </div>
+                                        {% endif %}
+                                        <h6 class="card-title mb-1">{{ doctor.full_name|default:doctor.user.username }}</h6>
+                                        <p class="card-text small text-muted mb-2">{{ doctor.get_specialization_display }}</p>
+                                        {% if doctor.whatsapp_public and doctor.whatsapp_number %}
+                                            <a href="{{ doctor.get_whatsapp_link }}" target="_blank" class="btn btn-success btn-sm">
+                                                <i class="fab fa-whatsapp me-1"></i>Contact
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'doctor_directory' %}" class="btn btn-outline-primary">View All Doctors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upcoming Sessions -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-calendar me-2"></i>Upcoming Therapy Sessions
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Dr. Sarah Chen, Clinical Psychologist</h6>
+                                <p class="mb-0">Individual Therapy - Cognitive Behavioral Therapy</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted">Tomorrow, 2:00 PM</small><br>
+                                <span class="badge bg-primary">Confirmed</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Dr. Michael Rodriguez, Counseling Psychologist</h6>
+                                <p class="mb-0">Couples Therapy - Relationship Counseling</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted">Dec 12, 10:30 AM</small><br>
+                                <span class="badge bg-warning">Pending</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Dr. Emily Williams, Child Psychologist</h6>
+                                <p class="mb-0">Family Therapy - Child Development Support</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted">Dec 15, 3:45 PM</small><br>
+                                <span class="badge bg-success">Confirmed</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Dr. James Thompson, Health Psychologist</h6>
+                                <p class="mb-0">Consultation - Stress Management</p>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted">Dec 18, 11:00 AM</small><br>
+                                <span class="badge bg-info">Scheduled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mental Health Resources -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-heart me-2"></i>Mental Health Resources
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-book text-primary me-2"></i>
+                            <a href="#" class="text-decoration-none">Daily Mindfulness Exercises</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-head-side-brain text-primary me-2"></i>
+                            <a href="#" class="text-decoration-none">Coping Strategies Library</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone text-primary me-2"></i>
+                            <a href="#" class="text-decoration-none">24/7 Crisis Support Hotline</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-users text-primary me-2"></i>
+                            <a href="#" class="text-decoration-none">Support Group Meetings</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-chart-line me-2"></i>Progress Tracker
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <h5 class="text-success">8.5/10</h5>
+                                <small class="text-muted">Mood Today</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <h5 class="text-primary">92%</h5>
+                                <small class="text-muted">Session Attendance</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-success" style="width: 85%"></div>
+                    </div>
+                    <small class="text-muted">Weekly wellness goal: 85%</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Find Doctors - Nexa PsychCare{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">Find a Doctor</h2>
+            <p class="lead text-muted">Connect with verified mental health professionals</p>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for doctor in doctors %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        {% if doctor.profile_photo %}
+                            <img src="{{ doctor.profile_photo.url }}" class="rounded-circle mb-3"
+                                 style="width: 80px; height: 80px; object-fit: cover;" alt="Doctor photo">
+                        {% else %}
+                            <div class="rounded-circle bg-primary d-inline-flex align-items-center justify-content-center mb-3"
+                                 style="width: 80px; height: 80px;">
+                                <i class="fas fa-user-md text-white" style="font-size: 2rem;"></i>
+                            </div>
+                        {% endif %}
+
+                        <h5 class="card-title">{{ doctor.full_name|default:doctor.user.get_full_name|default:doctor.user.username }}</h5>
+                        <p class="text-primary mb-1">{{ doctor.get_specialization_display|default:"Specialist" }}</p>
+                        <p class="text-muted small mb-2">{{ doctor.experience_years }} years experience</p>
+                        <p class="text-muted small mb-3">{{ doctor.hospital_clinic }}</p>
+
+                        {% if doctor.whatsapp_public and doctor.whatsapp_number %}
+                            <a href="{{ doctor.get_whatsapp_link }}" target="_blank" class="btn btn-success btn-sm me-2">
+                                <i class="fab fa-whatsapp me-1"></i>Contact
+                            </a>
+                        {% endif %}
+                        <button class="btn btn-outline-primary btn-sm">View Profile</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

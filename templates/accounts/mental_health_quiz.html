@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Mental Health Assessment - Nexa PsychCare{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-clipboard-check me-2"></i>Mental Health Assessment
+                    </h4>
+                    <div>
+                        <button onclick="history.back()" class="btn btn-outline-secondary btn-sm me-2">
+                            <i class="fas fa-arrow-left me-1"></i>Back
+                        </button>
+                        <a href="{% url 'logout' %}" class="btn btn-outline-danger btn-sm">
+                            <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>About this assessment:</strong> This questionnaire is based on the PHQ-9 (Patient Health Questionnaire-9) and GAD-7 (Generalized Anxiety Disorder-7) screening tools. It helps identify symptoms of depression and anxiety. Your responses are confidential and will help provide personalized recommendations.
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Important:</strong> This assessment is not a diagnostic tool. If you're experiencing severe symptoms or thoughts of self-harm, please contact a healthcare professional or emergency services immediately.
+                    </div>
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {% for question in questions %}
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">{{ question.id }}. {{ question.question }}</h5>
+                            </div>
+                            <div class="card-body">
+                                {% for option in question.options %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                           name="q{{ question.id }}" value="{{ option.score }}"
+                                           id="q{{ question.id }}_{{ option.score }}" required>
+                                    <label class="form-check-label" for="q{{ question.id }}_{{ option.score }}">
+                                        {{ option.text }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <!-- Optional Facial Image Upload -->
+                        <div class="card mb-4 border-info">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-camera me-2"></i>Optional: Facial Emotion Analysis
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    <strong>Enhance your assessment:</strong> Upload a recent photo of yourself for advanced facial emotion analysis. This can provide additional insights into your current emotional state. Your image is processed securely and not stored permanently.
+                                </div>
+                                <div class="mb-3">
+                                    <label for="facial_image" class="form-label">Upload a photo (optional)</label>
+                                    <input type="file" class="form-control" id="facial_image" name="facial_image" accept="image/*">
+                                    <div class="form-text">
+                                        Supported formats: JPG, PNG, GIF. Max size: 5MB.
+                                    </div>
+                                </div>
+                                <div class="text-muted small">
+                                    <i class="fas fa-shield-alt me-1"></i>
+                                    Your privacy is protected. Images are analyzed instantly and not retained on our servers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Assessment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Add some interactivity to the quiz
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-scroll to next question when answered (optional)
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Optional: could add visual feedback here
+            this.closest('.card').classList.add('border-success');
+        });
+    });
+});
+</script>
+{% endblock %}

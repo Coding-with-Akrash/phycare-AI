@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Logged Out - PsyCare AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card card-premium" style="margin-top: 120px;">
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 100px; height: 100px; background: var(--gradient-success);">
+                            <i class="fas fa-check-circle text-white" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <h2 class="fw-bold mb-3" style="color: var(--success-color);">Successfully Logged Out</h2>
+                    <p class="text-muted mb-4">
+                        You have been successfully logged out of PsyCare AI. Your session has been ended securely.
+                    </p>
+                    
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'home' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-home me-2"></i>Go to Home
+                        </a>
+                        <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i>Log In Again
+                        </a>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="text-center">
+                        <h5 class="fw-bold mb-3">Need Help?</h5>
+                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                            <a href="{% url 'contact' %}" class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-phone me-1"></i>Contact Support
+                            </a>
+                            <a href="{% url 'features' %}" class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-star me-1"></i>Features
+                            </a>
+                            <a href="{% url 'pricing' %}" class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-dollar-sign me-1"></i>Pricing
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security Notice -->
+            <div class="card mt-3" style="border: none; background: rgba(99, 102, 241, 0.05);">
+                <div class="card-body text-center p-3">
+                    <small class="text-muted">
+                        <i class="fas fa-shield-alt text-success me-1"></i>
+                        <strong>Security Notice:</strong> For your security, please close your browser window after logging out,
+                        especially when using shared or public computers.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

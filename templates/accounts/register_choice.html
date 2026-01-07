@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}Choose Your Role - PsyCare AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card card-premium mt-5">
+                <div class="card-body p-5">
+                    <div class="text-center mb-5">
+                        <h2 class="display-4 fw-bold" style="color: var(--primary-color);">Choose Your Role</h2>
+                        <p class="lead text-muted">Select how you'd like to join PsyCare AI</p>
+                    </div>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-2 card-elevated" style="border-color: var(--primary-color); transition: all 0.3s ease;">
+                                <div class="card-body text-center p-5">
+                                    <div class="mb-4">
+                                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                                             style="width: 100px; height: 100px; background: var(--gradient-primary);">
+                                            <i class="fas fa-user-md text-white" style="font-size: 3rem;"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="card-title fw-bold">Doctor</h3>
+                                    <p class="card-text text-muted mb-4">
+                                        Healthcare professional looking to connect with patients and manage appointments.
+                                    </p>
+                                    <ul class="list-unstyled text-start mb-4">
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Professional dashboard
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Patient management
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Appointment scheduling
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Medical records access
+                                        </li>
+                                    </ul>
+                                    <a href="{% url 'register_doctor' %}" class="btn btn-primary btn-lg w-100 pulse" data-loading="Setting up Doctor Account...">
+                                        <i class="fas fa-stethoscope me-2"></i>Register as Doctor
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100 border-2 card-elevated" style="border-color: var(--accent-color); transition: all 0.3s ease;">
+                                <div class="card-body text-center p-5">
+                                    <div class="mb-4">
+                                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                                             style="width: 100px; height: 100px; background: var(--gradient-secondary);">
+                                            <i class="fas fa-heartbeat text-white" style="font-size: 3rem;"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="card-title fw-bold">Patient</h3>
+                                    <p class="card-text text-muted mb-4">
+                                        Individual seeking healthcare services and looking to connect with medical professionals.
+                                    </p>
+                                    <ul class="list-unstyled text-start mb-4">
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Find doctors
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Book appointments
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Medical history
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Secure communication
+                                        </li>
+                                    </ul>
+                                    <a href="{% url 'register_patient' %}" class="btn btn-accent btn-lg w-100 pulse" data-loading="Setting up Patient Account...">
+                                        <i class="fas fa-user-friends me-2"></i>Register as Patient
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-5">
+                        <div class="card" style="background: rgba(99, 102, 241, 0.05); border: none;">
+                            <div class="card-body p-4">
+                                <h6 class="fw-bold mb-3">Already have an account?</h6>
+                                <a href="{% url 'login' %}" class="btn btn-outline-primary">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Sign in here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add hover effects to cards
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+</script>
+{% endblock %}

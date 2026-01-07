@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Registration - PsyCare AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card mt-4">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold" style="color: var(--accent-color);">
+                            <i class="fas fa-heartbeat me-2"></i>Patient Registration
+                        </h2>
+                        <p class="text-muted">Join as a patient seeking healthcare</p>
+                    </div>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <h5 class="mb-3">Account Information</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.username.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.email.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+                                {{ form.password }}
+                                {% if form.password.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.password.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.confirm_password.id_for_label }}" class="form-label">Confirm Password</label>
+                                {{ form.confirm_password }}
+                                {% if form.confirm_password.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.confirm_password.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <h5 class="mb-3">Personal Information</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name</label>
+                                {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.first_name.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name</label>
+                                {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.last_name.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.date_of_birth.id_for_label }}" class="form-label">Date of Birth</label>
+                                <div class="input-group">
+                                    {{ form.date_of_birth }}
+                                    <span class="input-group-text">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </span>
+                                </div>
+                                {% if form.date_of_birth.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.date_of_birth.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.age.id_for_label }}" class="form-label">Age</label>
+                                {{ form.age }}
+                                {% if form.age.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.age.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.gender.id_for_label }}" class="form-label">Gender</label>
+                                {{ form.gender }}
+                                {% if form.gender.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.gender.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.occupation.id_for_label }}" class="form-label">Occupation</label>
+                                {{ form.occupation }}
+                                {% if form.occupation.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.occupation.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number</label>
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.phone.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.address.id_for_label }}" class="form-label">Address</label>
+                            {{ form.address }}
+                            {% if form.address.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.address.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.city.id_for_label }}" class="form-label">City</label>
+                                {{ form.city }}
+                                {% if form.city.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.city.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.state.id_for_label }}" class="form-label">State/Province</label>
+                                {{ form.state }}
+                                {% if form.state.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.state.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.emergency_contact.id_for_label }}" class="form-label">Emergency Contact Name</label>
+                                {{ form.emergency_contact }}
+                                {% if form.emergency_contact.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.emergency_contact.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.emergency_phone.id_for_label }}" class="form-label">Emergency Contact Phone</label>
+                                {{ form.emergency_phone }}
+                                {% if form.emergency_phone.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.emergency_phone.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-heartbeat me-2"></i>Create Patient Account
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p class="mb-0">Already have an account? 
+                            <a href="{% url 'login' %}" style="color: var(--accent-color); text-decoration: none; font-weight: 500;">
+                                Sign in here
+                            </a>
+                        </p>
+                        <p class="mt-2">
+                            <a href="{% url 'register' %}" style="color: var(--secondary-color); text-decoration: none;">
+                                <i class="fas fa-arrow-left me-1"></i>Back to role selection
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

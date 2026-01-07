@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - PsyCare AI{% endblock %}
+
+{% block content %}
+<!-- Enhanced Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title pulse">Welcome to PsyCare AI</h1>
+                    <p class="hero-subtitle">
+                        A modern healthcare authentication system designed for both doctors and patients.
+                        Choose your role and get started with our secure, professional platform.
+                    </p>
+                    <div class="mt-4">
+                        {% if not user.is_authenticated %}
+                            <a href="{% url 'register' %}" class="btn btn-light btn-lg me-3 pulse" data-loading="Creating Account...">
+                                <i class="fas fa-user-plus me-2"></i>Get Started
+                            </a>
+                            <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg pulse">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login
+                            </a>
+                        {% else %}
+                            <a href="{% url 'dashboard' %}" class="btn btn-light btn-lg pulse">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Features Section -->
+<div class="container my-5">
+    <!-- Why Choose Us Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">Why Choose PsyCare AI?</h2>
+            <p class="lead text-muted">Your trusted partner in healthcare management</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-premium h-100">
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 100px; height: 100px; background: var(--gradient-primary);">
+                            <i class="fas fa-user-md text-white" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <h3 class="card-title fw-bold">For Doctors</h3>
+                    <p class="card-text text-muted mb-4">
+                        Professional platform for healthcare providers to manage patient relationships,
+                        appointments, and medical records securely.
+                    </p>
+                    <ul class="list-unstyled text-start mb-4">
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <strong>Patient Management:</strong> Organize and track patient information
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <strong>Appointment Scheduling:</strong> Streamlined booking system
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <strong>Medical Records:</strong> Secure access to patient history
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <strong>Professional Dashboard:</strong> Comprehensive analytics
+                        </li>
+                    </ul>
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'register_doctor' %}" class="btn btn-primary btn-lg pulse" data-loading="Creating Doctor Account...">
+                            <i class="fas fa-stethoscope me-2"></i>Join as Doctor
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card card-premium h-100">
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 100px; height: 100px; background: var(--gradient-secondary);">
+                            <i class="fas fa-heartbeat text-white" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <h3 class="card-title fw-bold">For Patients</h3>
+                    <p class="card-text text-muted mb-4">
+                        Easy-to-use platform for patients to find doctors, book appointments,
+                        and manage their health information securely.
+                    </p>
+                    <ul class="list-unstyled text-start mb-4">
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <strong>Find Doctors:</strong> Search by specialization and location
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <strong>Book Appointments:</strong> Easy scheduling with real-time availability
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <strong>Medical History:</strong> Complete health record management
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <strong>Secure Messaging:</strong> Direct communication with healthcare providers
+                        </li>
+                    </ul>
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'register_patient' %}" class="btn btn-accent btn-lg pulse" data-loading="Creating Patient Account...">
+                            <i class="fas fa-user-friends me-2"></i>Join as Patient
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Enhanced Statistics Section -->
+    <div class="stats-section mt-5">
+        <div class="row text-center">
+            <div class="col-md-3 col-6 mb-4">
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Verified Doctors</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Happy Patients</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="stat-card">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Medical Specialties</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4">
+                <div class="stat-card">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">System Uptime</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Trust Indicators -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card card-elevated">
+                <div class="card-body text-center p-4">
+                    <h5 class="fw-bold mb-3">Trusted by Healthcare Professionals</h5>
+                    <div class="row align-items-center">
+                        <div class="col-md-8 mx-auto">
+                            <p class="text-muted mb-0">
+                                <i class="fas fa-shield-alt text-success me-2"></i>
+                                <strong>HIPAA Compliant</strong> • 
+                                <i class="fas fa-lock text-success me-2"></i>
+                                <strong>End-to-End Encrypted</strong> • 
+                                <i class="fas fa-certificate text-success me-2"></i>
+                                <strong>Medically Certified</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block title %}Doctor Registration - PsyCare AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card mt-4">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold" style="color: var(--primary-color);">
+                            <i class="fas fa-user-md me-2"></i>Doctor Registration
+                        </h2>
+                        <p class="text-muted">Join as a healthcare professional</p>
+                    </div>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        <h5 class="mb-3">Account Information</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.username.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.email.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+                                {{ form.password }}
+                                {% if form.password.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.password.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.confirm_password.id_for_label }}" class="form-label">Confirm Password</label>
+                                {{ form.confirm_password }}
+                                {% if form.confirm_password.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.confirm_password.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <h5 class="mb-3">Professional Information</h5>
+                        <div class="mb-3">
+                            <label for="{{ form.full_name.id_for_label }}" class="form-label">Full Name</label>
+                            {{ form.full_name }}
+                            {% if form.full_name.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.full_name.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.specialization.id_for_label }}" class="form-label">Specialization</label>
+                            {{ form.specialization }}
+                            {% if form.specialization.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.specialization.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3" id="other-specialization-container" style="display: none;">
+                            <label for="{{ form.other_specialization.id_for_label }}" class="form-label">Please specify your specialization</label>
+                            {{ form.other_specialization }}
+                            {% if form.other_specialization.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.other_specialization.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.experience.id_for_label }}" class="form-label">Years of Experience</label>
+                                {{ form.experience }}
+                                {% if form.experience.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.experience.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.clinic_location.id_for_label }}" class="form-label">Clinic Location</label>
+                                {{ form.clinic_location }}
+                                {% if form.clinic_location.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.clinic_location.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.available_hours.id_for_label }}" class="form-label">Available Hours</label>
+                            {{ form.available_hours }}
+                            {% if form.available_hours.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.available_hours.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.whatsapp_number.id_for_label }}" class="form-label">WhatsApp Number (Optional)</label>
+                                {{ form.whatsapp_number }}
+                                {% if form.whatsapp_number.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.whatsapp_number.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.show_whatsapp.id_for_label }}" class="form-label">Show WhatsApp Number</label>
+                                <div class="form-check">
+                                    {{ form.show_whatsapp }}
+                                    <label class="form-check-label" for="{{ form.show_whatsapp.id_for_label }}">
+                                        Make WhatsApp number visible to patients
+                                    </label>
+                                </div>
+                                {% if form.show_whatsapp.errors %}
+                                    <div class="text-danger mt-1">
+                                        {{ form.show_whatsapp.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="{{ form.profile_photo.id_for_label }}" class="form-label">Profile Photo (Optional)</label>
+                            {{ form.profile_photo }}
+                            {% if form.profile_photo.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.profile_photo.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                            <div class="form-text">Upload a professional photo (optional)</div>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-user-md me-2"></i>Create Doctor Account
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p class="mb-0">Already have an account? 
+                            <a href="{% url 'login' %}" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">
+                                Sign in here
+                            </a>
+                        </p>
+                        <p class="mt-2">
+                            <a href="{% url 'register' %}" style="color: var(--secondary-color); text-decoration: none;">
+                                <i class="fas fa-arrow-left me-1"></i>Back to role selection
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Add some interactivity to the form
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle specialization dropdown
+    const specializationSelect = document.getElementById('doctor_specialization');
+    const otherSpecializationContainer = document.getElementById('other-specialization-container');
+    const otherSpecializationInput = document.getElementById('doctor_other_specialization');
+
+    function toggleOtherSpecialization() {
+        if (specializationSelect.value === 'Other') {
+            otherSpecializationContainer.style.display = 'block';
+            otherSpecializationInput.required = true;
+        } else {
+            otherSpecializationContainer.style.display = 'none';
+            otherSpecializationInput.required = false;
+            otherSpecializationInput.value = '';
+        }
+    }
+
+    if (specializationSelect) {
+        specializationSelect.addEventListener('change', toggleOtherSpecialization);
+        // Initial check
+        toggleOtherSpecialization();
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}AI Wellness Chat - Nexa PsychCare{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-robot me-2"></i>AI Wellness Assistant
+                    </h4>
+                    <div>
+                        <button onclick="history.back()" class="btn btn-outline-secondary btn-sm me-2">
+                            <i class="fas fa-arrow-left me-1"></i>Back
+                        </button>
+                        <a href="{% url 'logout' %}" class="btn btn-outline-danger btn-sm">
+                            <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Ethical Disclaimer:</strong> This AI provides emotional support and insights but is not a medical professional. For diagnosis or treatment, please consult a qualified healthcare provider.
+                    </div>
+                    <div style="height: 400px; overflow-y: auto;" id="chat-container">
+                    {% for conv in conversations %}
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-end mb-2">
+                                <div class="bg-primary text-white p-3 rounded-3" style="max-width: 70%;">
+                                    <strong>You:</strong> {{ conv.message }}
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <div class="bg-light p-3 rounded-3" style="max-width: 70%;">
+                                    <strong>AI Assistant:</strong>
+                                    {% if conv.parsed_response %}
+                                        <div class="mt-2">
+                                            <p><strong>Sentiment Score:</strong> {{ conv.parsed_response.sentiment_score }}</p>
+                                            <p><strong>Stress Level:</strong> {{ conv.parsed_response.stress_level }}/100</p>
+                                            <p><strong>Anxiety Level:</strong> {{ conv.parsed_response.anxiety_level }}/100</p>
+                                            <p><strong>Emotional State:</strong> {{ conv.parsed_response.emotional_state }}</p>
+                                            <p><strong>Risk Level:</strong> <span class="badge bg-{% if conv.parsed_response.risk_level == 'Low' %}success{% elif conv.parsed_response.risk_level == 'Moderate' %}warning{% else %}danger{% endif %}">{{ conv.parsed_response.risk_level }}</span></p>
+                                            <p><strong>Explanation:</strong> {{ conv.parsed_response.explanation }}</p>
+                                            <p><strong>Recommendations:</strong></p>
+                                            <ul>
+                                                {% for rec in conv.parsed_response.recommendations %}
+                                                    <li>{{ rec }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% if conv.parsed_response.doctor_recommendation == 'Yes' %}
+                                                <p class="text-danger"><strong>Doctor Recommendation:</strong> Yes, please consult a professional.</p>
+                                            {% endif %}
+                                            {% if conv.parsed_response.safety_message %}
+                                                <div class="alert alert-danger">
+                                                    {{ conv.parsed_response.safety_message }}
+                                                </div>
+                                            {% endif %}
+                                            <div class="mt-2">
+                                                <strong>Response:</strong> {{ conv.parsed_response.response_text }}
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        {{ conv.ai_response }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <form method="POST" enctype="multipart/form-data" id="chat-form" class="mb-3">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.message }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.facial_image.id_for_label }}" class="form-label text-muted">
+                                <i class="fas fa-camera me-1"></i>{{ form.facial_image.label }} (Optional)
+                            </label>
+                            {{ form.facial_image }}
+                            <div class="form-text small">
+                                Upload a photo for enhanced facial emotion analysis. Your image is processed securely and not stored.
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-1"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-center">
+                        <a href="{% url 'end_chat' %}" class="btn btn-success">
+                            <i class="fas fa-check-circle me-1"></i>End Chat & Get Evaluation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatContainer = document.getElementById('chat-container');
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+});
+</script>
+{% endblock %}

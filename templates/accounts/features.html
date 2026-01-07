@@ -1,0 +1,473 @@
+{% extends "base.html" %}
+
+{% block title %}Features - PsyCare AI{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title pulse">Powerful Features</h1>
+                    <p class="hero-subtitle">
+                        Comprehensive tools designed specifically for healthcare professionals and patients
+                        to streamline workflows, enhance security, and improve patient care.
+                    </p>
+                    <div class="mt-4">
+                        <a href="{% url 'register' %}" class="btn btn-light btn-lg me-3 pulse" data-loading="Setting up account...">
+                            <i class="fas fa-play me-2"></i>Try Features
+                        </a>
+                        <a href="#features-detail" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-arrow-down me-2"></i>Explore Features
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features Overview -->
+<div class="container my-5" id="features-detail">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">Why Choose PsyCare AI?</h2>
+            <p class="lead text-muted">Built specifically for the unique needs of healthcare</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card card-premium h-100">
+                <div class="card-body text-center p-4">
+                    <div class="mb-4">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 80px; height: 80px; background: var(--gradient-primary);">
+                            <i class="fas fa-shield-alt text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold">Bank-Grade Security</h5>
+                    <p class="text-muted">End-to-end encryption, multi-factor authentication, and HIPAA-compliant data handling</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card card-premium h-100">
+                <div class="card-body text-center p-4">
+                    <div class="mb-4">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 80px; height: 80px; background: var(--gradient-secondary);">
+                            <i class="fas fa-mobile-alt text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold">Mobile-First Design</h5>
+                    <p class="text-muted">Responsive interface that works seamlessly across all devices and screen sizes</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card card-premium h-100">
+                <div class="card-body text-center p-4">
+                    <div class="mb-4">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 80px; height: 80px; background: var(--gradient-success);">
+                            <i class="fas fa-clock text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold">24/7 Availability</h5>
+                    <p class="text-muted">99.9% uptime guarantee with global infrastructure and automatic failover systems</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed Features by User Type -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 mb-5">
+            <div class="text-center">
+                <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">Features by User Type</h2>
+                <p class="lead text-muted">Tailored functionality for every type of healthcare user</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Doctor Features -->
+    <div class="row mb-5">
+        <div class="col-12 mb-4">
+            <h3 class="fw-bold text-center mb-4">
+                <i class="fas fa-user-md me-2" style="color: var(--primary-color);"></i>
+                Doctor Features
+            </h3>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-users text-primary me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Patient Management</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Complete patient profiles</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Medical history tracking</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Contact information</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Care team coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-calendar-alt text-info me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Appointment System</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Real-time availability</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Automated reminders</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Rescheduling tools</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Calendar integration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-file-medical text-warning me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Medical Records</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Digital prescriptions</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Lab results integration</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Clinical notes</li>
+                        <li><i class="fas fa-check text-success me-2"></i>HIPAA compliant storage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-chart-line text-success me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Analytics & Reports</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Patient demographics</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Treatment outcomes</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Practice insights</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Compliance reporting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-comments text-primary me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Secure Messaging</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>HIPAA-compliant messaging</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Video consultations</li>
+                        <li><i class="fas fa-check text-success me-2"></i>File attachments</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Message encryption</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-stethoscope text-danger me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Clinical Tools</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Clinical decision support</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Drug interaction alerts</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Dosage calculators</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Medical references</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Patient Features -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h3 class="fw-bold text-center mb-4">
+                <i class="fas fa-heartbeat me-2" style="color: var(--accent-color);"></i>
+                Patient Features
+            </h3>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-search text-info me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Doctor Discovery</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Filter by specialty</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Location-based search</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Insurance compatibility</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Patient reviews & ratings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-calendar-check text-success me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Easy Scheduling</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Instant booking</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Real-time availability</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Appointment reminders</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Easy rescheduling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-file-alt text-warning me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Health Records</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Complete medical history</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Lab results access</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Prescription tracking</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Vaccination records</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-pills text-primary me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Medication Management</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Prescription reminders</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Drug interaction alerts</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Pharmacy integration</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Refill management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-video text-danger me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Telemedicine</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>HD video consultations</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Screen sharing</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Appointment recording</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Mobile compatibility</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-heartbeat text-success me-3" style="font-size: 1.5rem;"></i>
+                        <h6 class="fw-bold mb-0">Health Tracking</h6>
+                    </div>
+                    <ul class="list-unstyled text-muted">
+                        <li><i class="fas fa-check text-success me-2"></i>Vitals monitoring</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Symptom tracking</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Health goals</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Progress reports</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Security Features -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 mb-5">
+            <div class="text-center">
+                <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">Enterprise-Grade Security</h2>
+                <p class="lead text-muted">Your data is protected by the most advanced security measures</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body p-4">
+                    <i class="fas fa-lock text-success mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="fw-bold">End-to-End Encryption</h5>
+                    <p class="text-muted">AES-256 encryption for all data in transit and at rest</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body p-4">
+                    <i class="fas fa-shield-alt text-primary mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="fw-bold">HIPAA Compliant</h5>
+                    <p class="text-muted">Full compliance with healthcare privacy regulations</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body p-4">
+                    <i class="fas fa-fingerprint text-info mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="fw-bold">Multi-Factor Authentication</h5>
+                    <p class="text-muted">Biometric, SMS, and app-based authentication options</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card text-center h-100">
+                <div class="card-body p-4">
+                    <i class="fas fa-server text-warning mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="fw-bold">Secure Infrastructure</h5>
+                    <p class="text-muted">SOC 2 Type II certified cloud infrastructure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Integration Capabilities -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 mb-5">
+            <div class="text-center">
+                <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">Seamless Integrations</h2>
+                <p class="lead text-muted">Connect with your existing healthcare systems</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-hospital-alt text-primary mb-3" style="font-size: 2.5rem;"></i>
+                    <h5 class="fw-bold">EHR Integration</h5>
+                    <p class="text-muted">Epic, Cerner, Allscripts, and major EHR systems</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-pills text-success mb-3" style="font-size: 2.5rem;"></i>
+                    <h5 class="fw-bold">Pharmacy Systems</h5>
+                    <p class="text-muted">Direct integration with major pharmacy chains</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-microscope text-info mb-3" style="font-size: 2.5rem;"></i>
+                    <h5 class="fw-bold">Lab Systems</h5>
+                    <p class="text-muted">Automatic lab result import and processing</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-calendar text-warning mb-3" style="font-size: 2.5rem;"></i>
+                    <h5 class="fw-bold">Calendar Systems</h5>
+                    <p class="text-muted">Google Calendar, Outlook, and practice management</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-credit-card text-danger mb-3" style="font-size: 2.5rem;"></i>
+                    <h5 class="fw-bold">Payment Systems</h5>
+                    <p class="text-muted">Secure payment processing and insurance billing</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-mobile-alt text-primary mb-3" style="font-size: 2.5rem;"></i>
+                    <h5 class="fw-bold">Health Apps</h5>
+                    <p class="text-muted">Connect with fitness trackers and health monitoring</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-elevated" style="background: var(--gradient-primary); color: white;">
+                <div class="card-body text-center p-5">
+                    <h2 class="fw-bold mb-3">Experience the Future of Healthcare Technology</h2>
+                    <p class="mb-4" style="opacity: 0.9;">Join thousands of healthcare professionals using PsyCare AI</p>
+                    <div>
+                        <a href="{% url 'register' %}" class="btn btn-light btn-lg me-3 pulse">
+                            <i class="fas fa-rocket me-2"></i>Start Free Trial
+                        </a>
+                        <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-phone me-2"></i>Contact Sales
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

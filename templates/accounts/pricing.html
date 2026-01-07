@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+
+{% block title %}Pricing - PsyCare AI{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title pulse">Simple, Transparent Pricing</h1>
+                    <p class="hero-subtitle">
+                        Choose the perfect plan for your healthcare practice. Start free, scale as you grow.
+                        No hidden fees, no long-term contracts, cancel anytime.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Toggle -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="text-center mb-5">
+                <div class="card card-elevated d-inline-block">
+                    <div class="card-body p-3">
+                        <span class="me-3">Monthly</span>
+                        <div class="form-check form-switch d-inline-block me-3">
+                            <input class="form-check-input" type="checkbox" id="billingToggle">
+                            <label class="form-check-label" for="billingToggle"></label>
+                        </div>
+                        <span>Annual <span class="badge bg-success">Save 20%</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pricing Plans -->
+<div class="container my-5">
+    <div class="row">
+        <!-- Free Plan -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <i class="fas fa-seedling text-success" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="fw-bold">Starter</h3>
+                    <p class="text-muted">Perfect for individual practitioners</p>
+                    <div class="mb-4">
+                        <span class="display-4 fw-bold" id="starterPrice">$0</span>
+                        <span class="text-muted" id="starterPeriod">/month</span>
+                    </div>
+                    <ul class="list-unstyled text-start mb-4">
+                        <li><i class="fas fa-check text-success me-2"></i>Up to 100 patients</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Basic appointment scheduling</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Secure messaging</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Mobile app access</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Email support</li>
+                        <li><i class="fas fa-check text-success me-2"></i>HIPAA compliant</li>
+                    </ul>
+                    <a href="{% url 'register_patient' %}" class="btn btn-outline-primary btn-lg w-100">Get Started Free</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professional Plan -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 border-2" style="border-color: var(--primary-color); position: relative;">
+                <div class="position-absolute top-0 start-50 translate-middle">
+                    <span class="badge bg-primary px-3 py-2">Most Popular</span>
+                </div>
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <i class="fas fa-user-md text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="fw-bold">Professional</h3>
+                    <p class="text-muted">Ideal for growing practices</p>
+                    <div class="mb-4">
+                        <span class="display-4 fw-bold" id="proPrice">$29</span>
+                        <span class="text-muted" id="proPeriod">/month</span>
+                    </div>
+                    <ul class="list-unstyled text-start mb-4">
+                        <li><i class="fas fa-check text-success me-2"></i>Up to 1,000 patients</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Advanced scheduling & reminders</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Video consultations</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Electronic prescriptions</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Medical records management</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Analytics & reporting</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                        <li><i class="fas fa-check text-success me-2"></i>EHR integration</li>
+                    </ul>
+                    <a href="{% url 'register_doctor' %}" class="btn btn-primary btn-lg w-100">Start 14-Day Trial</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Enterprise Plan -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <i class="fas fa-hospital text-warning" style="font-size: 3rem;"></i>
+                    </div>
+                    <h3 class="fw-bold">Enterprise</h3>
+                    <p class="text-muted">For hospitals & large practices</p>
+                    <div class="mb-4">
+                        <span class="display-4 fw-bold" id="enterprisePrice">$99</span>
+                        <span class="text-muted" id="enterprisePeriod">/month</span>
+                    </div>
+                    <ul class="list-unstyled text-start mb-4">
+                        <li><i class="fas fa-check text-success me-2"></i>Unlimited patients</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Custom workflows</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Multi-location support</li>
+                        <li><i class="fas fa-check text-success me-2"></i>API access</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Custom integrations</li>
+                        <li><i class="fas fa-check text-success me-2"></i>White-label options</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Dedicated support</li>
+                        <li><i class="fas fa-check text-success me-2"></i>24/7 phone support</li>
+                        <li><i class="fas fa-check text-success me-2"></i>SLA guarantee</li>
+                    </ul>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-warning btn-lg w-100">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feature Comparison Table -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center mb-5" style="color: var(--primary-color);">Detailed Feature Comparison</h2>
+            
+            <div class="card card-elevated">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Feature</th>
+                                    <th class="text-center">Starter</th>
+                                    <th class="text-center">Professional</th>
+                                    <th class="text-center">Enterprise</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Patient Capacity</strong></td>
+                                    <td class="text-center">100</td>
+                                    <td class="text-center">1,000</td>
+                                    <td class="text-center">Unlimited</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Appointments per Month</strong></td>
+                                    <td class="text-center">50</td>
+                                    <td class="text-center">500</td>
+                                    <td class="text-center">Unlimited</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Video Consultations</strong></td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Electronic Prescriptions</strong></td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                                    <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EHR Integration</strong></td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center">Basic</td>
+                                    <td class="text-center">Advanced</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>API Access</strong></td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Custom Workflows</strong></td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>White-Label Options</strong></td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center">-</td>
+                                    <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Support Level</strong></td>
+                                    <td class="text-center">Email</td>
+                                    <td class="text-center">Priority</td>
+                                    <td class="text-center">Dedicated</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Uptime SLA</strong></td>
+                                    <td class="text-center">99.5%</td>
+                                    <td class="text-center">99.8%</td>
+                                    <td class="text-center">99.9%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h2 class="text-center mb-5" style="color: var(--primary-color);">Frequently Asked Questions</h2>
+            
+            <div class="accordion" id="pricingFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Can I change my plan at any time?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#pricingFAQ">
+                        <div class="accordion-body">
+                            Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, 
+                            and we'll prorate any billing differences.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Is my data secure and HIPAA compliant?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                        <div class="accordion-body">
+                            Absolutely. We maintain full HIPAA compliance and use bank-grade encryption for all data. 
+                            Our infrastructure is regularly audited for security compliance.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            What happens if I exceed my patient limit?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                        <div class="accordion-body">
+                            We'll notify you when you approach your limit. You can either upgrade to a higher plan 
+                            or pay a small overage fee per additional patient.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Do you offer custom enterprise solutions?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                        <div class="accordion-body">
+                            Yes! Our Enterprise plan can be customized to meet your specific needs. Contact our sales 
+                            team to discuss custom integrations, workflows, and pricing.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            Is there a setup fee or long-term contract?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                        <div class="accordion-body">
+                            No setup fees and no long-term contracts required. You can cancel at any time with 
+                            30 days notice. We believe in earning your business every month.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Trust Indicators -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="background: rgba(99, 102, 241, 0.05); border: none;">
+                <div class="card-body text-center p-4">
+                    <h5 class="fw-bold mb-3">Trusted by Healthcare Professionals</h5>
+                    <div class="row align-items-center">
+                        <div class="col-md-9 mx-auto">
+                            <p class="text-muted mb-0">
+                                <i class="fas fa-shield-alt text-success me-2"></i>
+                                <strong>HIPAA Compliant</strong> • 
+                                <i class="fas fa-lock text-success me-2"></i>
+                                <strong>SOC 2 Certified</strong> • 
+                                <i class="fas fa-certificate text-success me-2"></i>
+                                <strong>99.9% Uptime</strong> • 
+                                <i class="fas fa-headset text-success me-2"></i>
+                                <strong>24/7 Support</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-elevated" style="background: var(--gradient-primary); color: white;">
+                <div class="card-body text-center p-5">
+                    <h2 class="fw-bold mb-3">Ready to Get Started?</h2>
+                    <p class="mb-4" style="opacity: 0.9;">Join thousands of healthcare professionals already using PsyCare AI</p>
+                    <div>
+                        <a href="{% url 'register_doctor' %}" class="btn btn-light btn-lg me-3 pulse">
+                            <i class="fas fa-user-md me-2"></i>Start as Doctor
+                        </a>
+                        <a href="{% url 'register_patient' %}" class="btn btn-outline-light btn-lg pulse">
+                            <i class="fas fa-heartbeat me-2"></i>Start as Patient
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const billingToggle = document.getElementById('billingToggle');
+    const starterPrice = document.getElementById('starterPrice');
+    const proPrice = document.getElementById('proPrice');
+    const enterprisePrice = document.getElementById('enterprisePrice');
+    const starterPeriod = document.getElementById('starterPeriod');
+    const proPeriod = document.getElementById('proPeriod');
+    const enterprisePeriod = document.getElementById('enterprisePeriod');
+    
+    billingToggle.addEventListener('change', function() {
+        if (this.checked) {
+            // Annual pricing (20% discount)
+            starterPrice.textContent = '$0';
+            proPrice.textContent = '$23';
+            enterprisePrice.textContent = '$79';
+            starterPeriod.textContent = '/year';
+            proPeriod.textContent = '/year';
+            enterprisePeriod.textContent = '/year';
+        } else {
+            // Monthly pricing
+            starterPrice.textContent = '$0';
+            proPrice.textContent = '$29';
+            enterprisePrice.textContent = '$99';
+            starterPeriod.textContent = '/month';
+            proPeriod.textContent = '/month';
+            enterprisePeriod.textContent = '/month';
+        }
+    });
+});
+</script>
+{% endblock %}

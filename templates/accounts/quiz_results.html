@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Mental Health Quiz Results{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-clipboard-check"></i> Mental Health Assessment Results
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- Quiz Summary -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="card border-info">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-info">Depression Level</h5>
+                                    <h2 class="text-info">{{ quiz.get_depression_level_display }}</h2>
+                                    <p class="text-muted">Score: {{ quiz.total_score }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-warning">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-warning">Anxiety Level</h5>
+                                    <h2 class="text-warning">{{ quiz.get_anxiety_level_display }}</h2>
+                                    <p class="text-muted">Score: {{ quiz.total_score }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Facial Emotion Analysis (if available) -->
+                    {% if quiz.facial_emotion_data and quiz.facial_emotion_data.error not in quiz.facial_emotion_data %}
+                    <div class="card border-success mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-camera"></i> Facial Emotion Analysis
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Primary Emotion Detected:</h6>
+                                    <p class="h4 text-success">{{ quiz.facial_emotion_data.primary_emotion|title }}</p>
+                                    <p class="text-muted">Confidence: {{ quiz.facial_emotion_data.confidence|floatformat:1 }}%</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Emotion Breakdown:</h6>
+                                    {% for emotion, score in quiz.facial_emotion_data.all_emotions.items %}
+                                    <div class="progress mb-2" style="height: 20px;">
+                                        <div class="progress-bar" role="progressbar"
+                                             style="width: {{ score|mul:100 }}%"
+                                             aria-valuenow="{{ score|mul:100 }}"
+                                             aria-valuemin="0" aria-valuemax="100">
+                                            {{ emotion|title }}: {{ score|floatformat:1 }}%
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Recommendations -->
+                    <div class="card border-primary mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-lightbulb"></i> Personalized Recommendations
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            {% for recommendation in quiz.recommendations|linebreaks %}
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> {{ recommendation }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="text-center">
+                        <a href="{% url 'mental_health_quiz' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-redo"></i> Take Quiz Again
+                        </a>
+                        <a href="{% url 'ai_chat' %}" class="btn btn-success">
+                            <i class="fas fa-comments"></i> Talk to AI Assistant
+                        </a>
+                        <a href="{% url 'doctor_directory' %}" class="btn btn-info">
+                            <i class="fas fa-user-md"></i> Find a Doctor
+                        </a>
+                        <a href="{% url 'patient_dashboard' %}" class="btn btn-secondary">
+                            <i class="fas fa-home"></i> Back to Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

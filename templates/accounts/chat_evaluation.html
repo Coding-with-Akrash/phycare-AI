@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Chat Evaluation - Nexa PsychCare{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-clipboard-check me-2"></i>Chat Evaluation & Recommendations
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Evaluation Summary:</strong> Based on your mental health quiz (Score: {{ quiz.total_score }}/50) and our conversation.
+                    </div>
+
+                    {% if evaluation.needs_doctor %}
+                        <div class="alert alert-warning">
+                            <h5><i class="fas fa-exclamation-triangle me-2"></i>Professional Consultation Recommended</h5>
+                            <p>{{ evaluation.message }}</p>
+                        </div>
+
+                        <h5>Recommended Doctors (Currently Online):</h5>
+                        {% if evaluation.recommended_doctors %}
+                            <div class="row">
+                                {% for doctor in evaluation.recommended_doctors %}
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">{{ doctor.name }}</h6>
+                                                <p class="card-text">{{ doctor.specialization }}</p>
+                                                <a href="{% url 'doctor_directory' %}" class="btn btn-primary btn-sm">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>No doctors are currently online. Please check the <a href="{% url 'doctor_directory' %}">doctor directory</a> for available professionals.</p>
+                        {% endif %}
+                    {% else %}
+                        <div class="alert alert-success">
+                            <h5><i class="fas fa-check-circle me-2"></i>Self-Care Solutions</h5>
+                            <p>{{ evaluation.message }}</p>
+                        </div>
+
+                        <h5>Recommended Solutions:</h5>
+                        <ul class="list-group">
+                            {% for solution in evaluation.solutions %}
+                                <li class="list-group-item">{{ solution }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <div class="mt-4">
+                        <a href="{% url 'patient_dashboard' %}" class="btn btn-primary">
+                            <i class="fas fa-home me-1"></i>Back to Dashboard
+                        </a>
+                        <a href="{% url 'ai_chat' %}" class="btn btn-outline-secondary ms-2">
+                            <i class="fas fa-comments me-1"></i>Continue Chatting
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

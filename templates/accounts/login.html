@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Login - PsyCare AI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card card-premium" style="margin-top: 120px;">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                             style="width: 80px; height: 80px; background: var(--gradient-primary);">
+                            <i class="fas fa-sign-in-alt text-white" style="font-size: 2rem;"></i>
+                        </div>
+                        <h2 class="fw-bold" style="color: var(--primary-color);">Welcome Back</h2>
+                        <p class="text-muted">Sign in to your account</p>
+                    </div>
+                    
+                    <form method="POST" id="loginForm">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="id_username" name="username" 
+                                       placeholder="Username" required>
+                                <label for="id_username">
+                                    <i class="fas fa-user me-2"></i>Username
+                                </label>
+                            </div>
+                            {% if form.username.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.username.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="id_password" name="password" 
+                                       placeholder="Password" required>
+                                <label for="id_password">
+                                    <i class="fas fa-lock me-2"></i>Password
+                                </label>
+                            </div>
+                            {% if form.password.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.password.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg" data-loading="Signing In...">
+                                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p class="mb-0">Don't have an account? 
+                            <a href="{% url 'register' %}" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">
+                                Sign up here
+                            </a>
+                        </p>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <small>
+                            <a href="#" style="color: var(--text-secondary); text-decoration: none;">
+                                Forgot your password?
+                            </a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Access Card -->
+            <div class="card mt-3" style="border: none; background: rgba(99, 102, 241, 0.05);">
+                <div class="card-body text-center p-3">
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        <strong>Demo Accounts:</strong><br>
+                        <span class="text-success">Doctor: drtest / test123</span> | 
+                        <span class="text-primary">Patient: patient / test123</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', function(e) {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Mood Check-In - Nexa PsychCare{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold" style="color: var(--accent-color);">
+                            <i class="fas fa-heartbeat me-2"></i>How are you feeling today?
+                        </h2>
+                        <p class="text-muted">Take a moment to check in with yourself. Your feelings matter.</p>
+                    </div>
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">{{ form.mood.label }}</h5>
+                            {% for radio in form.mood %}
+                                <div class="form-check mb-2">
+                                    {{ radio.tag }}
+                                    <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                        {{ radio.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">{{ form.emotions.label }}</h5>
+                            <div class="row">
+                                {% for checkbox in form.emotions %}
+                                    <div class="col-md-6 col-lg-4 mb-2">
+                                        <div class="form-check">
+                                            {{ checkbox.tag }}
+                                            <label class="form-check-label" for="{{ checkbox.id_for_label }}">
+                                                {{ checkbox.choice_label }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">{{ form.energy_level.label }}</h5>
+                            {% for radio in form.energy_level %}
+                                <div class="form-check mb-2">
+                                    {{ radio.tag }}
+                                    <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                        {{ radio.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">{{ form.sleep_quality.label }}</h5>
+                            {% for radio in form.sleep_quality %}
+                                <div class="form-check mb-2">
+                                    {{ radio.tag }}
+                                    <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                        {{ radio.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">{{ form.social_interaction.label }}</h5>
+                            {% for radio in form.social_interaction %}
+                                <div class="form-check mb-2">
+                                    {{ radio.tag }}
+                                    <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                        {{ radio.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">{{ form.stress_level.label }}</h5>
+                            {% for radio in form.stress_level %}
+                                <div class="form-check mb-2">
+                                    {{ radio.tag }}
+                                    <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                        {{ radio.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">{{ form.concentration.label }}</h5>
+                            {% for radio in form.concentration %}
+                                <div class="form-check mb-2">
+                                    {{ radio.tag }}
+                                    <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                        {{ radio.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="mb-3">{{ form.physical_health.label }}</h5>
+                            {% for radio in form.physical_health %}
+                                <div class="form-check mb-2">
+                                    {{ radio.tag }}
+                                    <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                        {{ radio.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="{{ form.notes.id_for_label }}" class="form-label">{{ form.notes.label }}</label>
+                            {{ form.notes }}
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-save me-2"></i>Save My Mood Check-In
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

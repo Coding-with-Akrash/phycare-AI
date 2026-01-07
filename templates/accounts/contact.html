@@ -1,0 +1,379 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - PsyCare AI{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title pulse">Get in Touch</h1>
+                    <p class="hero-subtitle">
+                        Have questions about PsyCare AI? Need help getting started? Our expert team is here to assist you
+                        with your healthcare technology needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Methods -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">How Can We Help?</h2>
+            <p class="lead text-muted">Choose the best way to reach our team</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 80px; height: 80px; background: var(--gradient-primary);">
+                            <i class="fas fa-phone text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold">Call Us</h5>
+                    <p class="text-muted">Speak directly with our support team</p>
+                    <p class="fw-bold text-primary">+1 (555) 123-4567</p>
+                    <small class="text-muted">Mon-Fri 8AM-6PM EST</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 80px; height: 80px; background: var(--gradient-secondary);">
+                            <i class="fas fa-envelope text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold">Email Us</h5>
+                    <p class="text-muted">Send us a detailed message</p>
+                    <p class="fw-bold text-primary">support@nexaauth.com</p>
+                    <small class="text-muted">Response within 24 hours</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 80px; height: 80px; background: var(--gradient-success);">
+                            <i class="fas fa-comments text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold">Live Chat</h5>
+                    <p class="text-muted">Get instant help online</p>
+                    <button class="btn btn-success">Start Chat</button>
+                    <small class="text-muted d-block">Available 24/7</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 80px; height: 80px; background: var(--gradient-warning);">
+                            <i class="fas fa-calendar text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold">Schedule Demo</h5>
+                    <p class="text-muted">See PsyCare AI in action</p>
+                    <button class="btn btn-warning">Book Demo</button>
+                    <small class="text-muted d-block">30-minute session</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Form and Office Info -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card card-premium">
+                <div class="card-body p-5">
+                    <h3 class="fw-bold mb-4" style="color: var(--primary-color);">Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name *</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name *</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="organization" class="form-label">Organization/Hospital</label>
+                                <input type="text" class="form-control" id="organization">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="role" class="form-label">Your Role</label>
+                                <select class="form-control" id="role">
+                                    <option value="">Select your role</option>
+                                    <option value="doctor">Doctor</option>
+                                    <option value="nurse">Nurse</option>
+                                    <option value="admin">Healthcare Administrator</option>
+                                    <option value="patient">Patient</option>
+                                    <option value="it">IT Professional</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select class="form-control" id="subject" required>
+                                <option value="">What can we help you with?</option>
+                                <option value="demo">Request a Demo</option>
+                                <option value="pricing">Pricing Information</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="integration">Integration Questions</option>
+                                <option value="sales">Sales Inquiry</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" rows="5" 
+                                placeholder="Please provide details about your inquiry..." required></textarea>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="newsletter" checked>
+                                <label class="form-check-label" for="newsletter">
+                                    Subscribe to our healthcare technology newsletter
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="privacy" required>
+                            <label class="form-check-label" for="privacy">
+                                I agree to the <a href="{% url 'privacy' %}" target="_blank">Privacy Policy</a> and 
+                                <a href="{% url 'terms' %}" target="_blank">Terms of Service</a> *
+                            </label>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg" data-loading="Sending Message...">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card card-elevated">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-4" style="color: var(--primary-color);">Office Information</h4>
+                    
+                    <div class="mb-4">
+                        <h6 class="fw-bold">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>Headquarters
+                        </h6>
+                        <p class="text-muted mb-0">
+                            123 Healthcare Innovation Drive<br>
+                            Suite 400<br>
+                            San Francisco, CA 94102<br>
+                            United States
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h6 class="fw-bold">
+                            <i class="fas fa-clock text-success me-2"></i>Business Hours
+                        </h6>
+                        <p class="text-muted mb-1">Monday - Friday: 8:00 AM - 6:00 PM EST</p>
+                        <p class="text-muted mb-1">Saturday: 9:00 AM - 2:00 PM EST</p>
+                        <p class="text-muted mb-0">Sunday: Closed</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h6 class="fw-bold">
+                            <i class="fas fa-life-ring text-info me-2"></i>Support Hours
+                        </h6>
+                        <p class="text-muted mb-0">
+                            24/7 Technical Support<br>
+                            Email: support@nexaauth.com<br>
+                            Emergency: +1 (555) 123-9999
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h6 class="fw-bold">
+                            <i class="fas fa-users text-warning me-2"></i>Regional Offices
+                        </h6>
+                        <p class="text-muted mb-1"><strong>New York:</strong> +1 (555) 234-5678</p>
+                        <p class="text-muted mb-1"><strong>Chicago:</strong> +1 (555) 345-6789</p>
+                        <p class="text-muted mb-0"><strong>London:</strong> +44 20 1234 5678</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="card mt-4">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="{% url 'about' %}" class="text-decoration-none">
+                                <i class="fas fa-info-circle text-primary me-2"></i>About Us
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'features' %}" class="text-decoration-none">
+                                <i class="fas fa-star text-primary me-2"></i>Features
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'pricing' %}" class="text-decoration-none">
+                                <i class="fas fa-dollar-sign text-primary me-2"></i>Pricing
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none">
+                                <i class="fas fa-book text-primary me-2"></i>Documentation
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none">
+                                <i class="fas fa-blog text-primary me-2"></i>Blog
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Support Resources -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h2 class="display-5 fw-bold mb-4" style="color: var(--primary-color);">Support Resources</h2>
+            <p class="lead text-muted">Self-service options to help you quickly</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-book text-info mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="fw-bold">Knowledge Base</h5>
+                    <p class="text-muted">Comprehensive guides, tutorials, and frequently asked questions</p>
+                    <a href="#" class="btn btn-outline-info">Browse Articles</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-video text-success mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="fw-bold">Video Tutorials</h5>
+                    <p class="text-muted">Step-by-step video guides for common tasks and features</p>
+                    <a href="#" class="btn btn-outline-success">Watch Videos</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-users text-primary mb-3" style="font-size: 3rem;"></i>
+                    <h5 class="fw-bold">Community Forum</h5>
+                    <p class="text-muted">Connect with other users and share best practices</p>
+                    <a href="#" class="btn btn-outline-primary">Join Community</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Emergency Support -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="background: linear-gradient(135deg, #dc3545, #c82333); color: white;">
+                <div class="card-body text-center p-4">
+                    <i class="fas fa-exclamation-triangle mb-3" style="font-size: 2.5rem;"></i>
+                    <h4 class="fw-bold mb-2">Emergency Support</h4>
+                    <p class="mb-3">For urgent technical issues affecting patient care</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="tel:+15551239999" class="btn btn-light">
+                            <i class="fas fa-phone me-2"></i>Call Emergency Line
+                        </a>
+                        <a href="mailto:emergency@nexaauth.com" class="btn btn-outline-light">
+                            <i class="fas fa-envelope me-2"></i>Emergency Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.classList.add('btn-loading');
+        submitBtn.disabled = true;
+        
+        // Simulate form submission
+        setTimeout(() => {
+            // Reset form
+            form.reset();
+            submitBtn.classList.remove('btn-loading');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            
+            // Show success message
+            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+        }, 2000);
+    });
+});
+</script>
+{% endblock %}
