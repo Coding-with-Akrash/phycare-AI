@@ -1,0 +1,34 @@
+text,emotion
+"i feel that it was worth the effort",joy
+"i feel it is worth it",joy
+"i did not feel humiliated",joy
+"i feel that i am neither fortunate nor unfortunate",neutral
+"i feel so sorry for him",sadness
+"i feel so overwhelmed",sadness
+"i feel like a failure",sadness
+"i feel so discouraged",sadness
+"i feel so ashamed",sadness
+"i feel so devastated",sadness
+"i feel so furious",anger
+"i feel so angry",anger
+"i feel so irritated",anger
+"i feel so frustrated",anger
+"i feel so disgusted",anger
+"i feel so outraged",anger
+"i feel so scared",fear
+"i feel so anxious",fear
+"i feel so nervous",fear
+"i feel so terrified",fear
+"i feel so worried",fear
+"i feel so frightened",fear
+"i feel so surprised",joy
+"i feel so amazed",joy
+"i feel so shocked",joy
+"i feel so astonished",joy
+"i feel so stunned",joy
+"i feel so bewildered",fear
+"i feel so confused",fear
+"i feel so puzzled",fear
+"i feel so perplexed",fear
+"i feel so baffled",fear
+"i feel so dazed",fear

@@ -1,0 +1,31 @@
+text,emotion
+"I finally finished my project and it feels amazing!",joy
+"I'm so proud of what I've accomplished",joy
+"This is the best day ever",joy
+"I love how supportive my friends are",joy
+"I'm grateful for every moment",joy
+"I'm really struggling with this depression",sadness
+"I feel so empty inside",sadness
+"Nothing seems worth it anymore",sadness
+"I can't stop crying",sadness
+"I feel completely alone",sadness
+"I'm furious about this injustice",anger
+"This makes me absolutely livid",anger
+"I can't believe how unfair this is",anger
+"I'm so frustrated with everything",anger
+"People's stupidity drives me crazy",anger
+"I'm terrified of what might happen next",fear
+"My anxiety is through the roof",fear
+"I'm scared of losing everything",fear
+"What if something goes wrong?",fear
+"I feel unsafe all the time",fear
+"I believe things will improve soon",optimism
+"I'm hopeful about my future",optimism
+"This is just a temporary setback",optimism
+"I trust that better days are coming",optimism
+"I'm optimistic about treatment options",optimism
+"Today feels pretty average",neutral
+"Nothing special happened",neutral
+"I'm just existing right now",neutral
+"Life feels routine",neutral
+"I'm not feeling strongly either way",neutral

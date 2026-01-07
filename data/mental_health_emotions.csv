@@ -1,0 +1,150 @@
+text,emotion
+"I feel so happy and content today",joy
+"I'm really sad and don't know what to do",sadness
+"I'm so angry at everything right now",anger
+"I feel hopeful about the future",optimism
+"Life is wonderful and I'm grateful",joy
+"I can't stop feeling depressed",sadness
+"Everything makes me furious",anger
+"I'm optimistic about my recovery",optimism
+"I'm thrilled with my progress",joy
+"I feel empty and hopeless",sadness
+"I'm enraged by the injustice",anger
+"I believe things will get better",optimism
+"I'm scared of what might happen",fear
+"I'm terrified of the future",fear
+"I'm worried about everything",fear
+"Everything seems okay right now",neutral
+"I don't feel anything particular",neutral
+"Just another normal day",neutral
+"I'm feeling really down today",sadness
+"I'm so happy with my life",joy
+"I'm angry about this situation",anger
+"I feel hopeful for tomorrow",optimism
+"I'm worried about the future",fear
+"Today is just okay",neutral
+"I feel blessed and happy",joy
+"Everything is going great",joy
+"I'm so excited about tomorrow",joy
+"I love how my life is turning out",joy
+"Everything feels meaningless",sadness
+"I cry myself to sleep every night",sadness
+"I feel so alone and broken",sadness
+"Nothing brings me joy anymore",sadness
+"I feel worthless and unwanted",sadness
+"I can't control my anger",anger
+"People make me so mad",anger
+"I'm furious about this situation",anger
+"I feel rage building inside me",anger
+"This is absolutely infuriating",anger
+"I have constant anxiety",fear
+"I'm afraid of failing",fear
+"My heart races with fear",fear
+"I panic at the thought",fear
+"I'm always nervous and anxious",fear
+"There's light at the end of the tunnel",optimism
+"I'm hopeful for a better tomorrow",optimism
+"I see positive changes coming",optimism
+"My outlook is improving",optimism
+"I have faith in the future",optimism
+"I'm feeling balanced today",neutral
+"Nothing special happening",neutral
+"I'm in a neutral mood",neutral
+"Average day, nothing to report",neutral
+"Feeling neither good nor bad",neutral
+"I wake up every morning feeling excited about my day",joy
+"My family and friends make me so happy",joy
+"I accomplished something great today",joy
+"I'm grateful for all the good things in my life",joy
+"I feel peaceful and calm inside",joy
+"I'm proud of who I've become",joy
+"I'm looking forward to the weekend",joy
+"My favorite hobby brings me so much joy",joy
+"I feel completely overwhelmed by sadness",sadness
+"I can't find motivation to do anything",sadness
+"I feel like I'm drowning in despair",sadness
+"Every day feels like a struggle",sadness
+"I miss the person I used to be",sadness
+"I feel numb and disconnected from everything",sadness
+"I cry for no reason at all",sadness
+"I feel like a burden to everyone",sadness
+"I'm furious about how unfair life is",anger
+"I can't stand people who are so selfish",anger
+"This situation makes me absolutely livid",anger
+"I feel betrayed and hurt",anger
+"People's ignorance drives me crazy",anger
+"I want to scream at the world",anger
+"I'm so frustrated with everything",anger
+"I feel like exploding with rage",anger
+"I'm terrified of being alone forever",fear
+"What if I make the wrong decision?",fear
+"I can't stop worrying about my health",fear
+"I'm afraid of losing the people I love",fear
+"The future seems so uncertain and scary",fear
+"I panic when I think about failing",fear
+"I'm constantly on edge and anxious",fear
+"I feel unsafe even in familiar places",fear
+"I believe tomorrow will be a better day",optimism
+"I'm confident in my ability to overcome this",optimism
+"I see opportunities where others see problems",optimism
+"My therapist says I'm making great progress",optimism
+"I trust that things will work out",optimism
+"I'm excited about starting therapy",optimism
+"I feel more hopeful than I have in months",optimism
+"I'm committed to getting better",optimism
+"Today was neither good nor bad",neutral
+"I'm just going through the motions",neutral
+"Nothing particularly exciting happened",neutral
+"I feel indifferent about most things",neutral
+"It's just another Wednesday",neutral
+"I'm not feeling strongly about anything",neutral
+"Life feels routine and predictable",neutral
+"I'm content with where I am right now",neutral
+"I feel joyful when I help others",joy
+"My achievements make me feel accomplished",joy
+"I love spending time with loved ones",joy
+"Music always lifts my spirits",joy
+"I'm happy with my personal growth",joy
+"Nature walks bring me peace and joy",joy
+"I feel blessed to have supportive friends",joy
+"Celebrating small wins makes me happy",joy
+"I feel deep sadness about my losses",sadness
+"I mourn the life I wish I had",sadness
+"I feel heartbroken and shattered",sadness
+"Depression has stolen my joy",sadness
+"I feel isolated from the world",sadness
+"My sadness feels like a heavy weight",sadness
+"I grieve for my past self",sadness
+"I feel trapped in darkness",sadness
+"I'm angry at myself for my mistakes",anger
+"I resent how my illness affects others",anger
+"I'm frustrated with my lack of progress",anger
+"I hate feeling this way all the time",anger
+"People's pity makes me angry",anger
+"I'm mad at the unfairness of mental illness",anger
+"I feel rage toward my condition",anger
+"I'm bitter about lost opportunities",anger
+"I'm afraid of being judged for my illness",fear
+"I worry about burdening my family",fear
+"I'm scared of never getting better",fear
+"What if I lose my job because of this?",fear
+"I fear social situations and rejection",fear
+"I'm anxious about doctor's appointments",fear
+"I panic about my symptoms worsening",fear
+"I'm terrified of being hospitalized again",fear
+"I'm optimistic about new treatment options",optimism
+"I believe in my resilience and strength",optimism
+"I'm hopeful about research breakthroughs",optimism
+"I see my therapist's support as a positive sign",optimism
+"I'm excited about learning coping skills",optimism
+"I trust the process of recovery",optimism
+"I'm confident in my support system",optimism
+"I feel positive about my future potential",optimism
+"I'm feeling somewhat stable today",neutral
+"My mood is calm and even",neutral
+"I'm not experiencing strong emotions",neutral
+"Life feels manageable right now",neutral
+"I'm in a state of quiet acceptance",neutral
+"I'm neither happy nor sad currently",neutral
+"My emotions feel muted and distant",neutral
+"I'm maintaining a steady emotional state",neutral
